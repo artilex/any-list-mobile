@@ -1,5 +1,6 @@
 import i18n, {Module} from 'i18next';
 import {initReactI18next} from 'react-i18next';
+
 import enTranslations from '../assets/translations/en.json';
 import ruTranslations from '../assets/translations/ru.json';
 

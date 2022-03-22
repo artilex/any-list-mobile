@@ -1,9 +1,10 @@
 import React from 'react';
-import Navigator from './src/navigation';
+
+import AppNavigation from './src/navigation';
 import './src/services/i18n';
 
 const App = () => {
-  return <Navigator />;
+  return <AppNavigation />;
 };
 
 export default App;

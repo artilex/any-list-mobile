@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import {View, Text, Button} from 'react-native';
 import {useTranslation} from 'react-i18next';
-import s from './styles';
-import CalendarSvg from '../../../assets/images/calendar.svg';
-import ActiveCalendarSvg from '../../../assets/images/calendar-active.svg';
 import {Calendar as DefaultCalendar} from 'react-native-calendars';
+
+import s from './styles';
+import CalendarSvg from 'src/assets/images/calendar.svg';
+import ActiveCalendarSvg from 'src/assets/images/calendar-active.svg';
 
 const Calendar = () => {
   const {t} = useTranslation();
@@ -36,7 +37,7 @@ const Calendar = () => {
         // Hide month navigation arrows. Default = false
         hideArrows={true}
         // Replace default arrows with custom ones (direction can be 'left' or 'right')
-        renderArrow={direction => <Arrow />}
+        // renderArrow={direction => <Arrow />}
         // Do not show days of other months in month page. Default = false
         hideExtraDays={true}
         // If hideArrows = false and hideExtraDays = false do not switch month when tapping on greyed out
@@ -59,9 +60,9 @@ const Calendar = () => {
         // Disable all touch events for disabled days. can be override with disableTouchEvent in markedDates
         disableAllTouchEventsForDisabledDays={true}
         // Replace default month and year title with custom one. the function receive a date as parameter
-        renderHeader={date => {
-          /*Return JSX*/
-        }}
+        // renderHeader={date => {
+        //   /*Return JSX*/
+        // }}
         // Enable the option to swipe between months. Default = false
         enableSwipeMonths={true}
       />

@@ -1,11 +1,12 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {ShoppingListCalendar, ShoppingListSettings} from '../screens';
+
+import {ShoppingListCalendar, ShoppingListSettings} from 'src/screens';
 
 const ShoppingTabNavigator = createBottomTabNavigator();
 
-const Navigator = () => {
+const AppNavigation = () => {
   return (
     <NavigationContainer>
       <ShoppingTabNavigator.Navigator>
@@ -22,4 +23,4 @@ const Navigator = () => {
   );
 };
 
-export default Navigator;
+export default AppNavigation;
