@@ -2,7 +2,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import {ShoppingListCalendar, ShoppingListSettings} from 'src/screens';
+import {CalendarScreen, SettingsScreen} from 'src/features/ShoppingList/screens';
 
 const ShoppingTabNavigator = createBottomTabNavigator();
 
@@ -11,12 +11,12 @@ const AppNavigation = () => {
     <NavigationContainer>
       <ShoppingTabNavigator.Navigator>
         <ShoppingTabNavigator.Screen
-          name={'ShoppingListCalendar'}
-          component={ShoppingListCalendar}
+          name={'CalendarScreen'}
+          component={CalendarScreen}
         />
         <ShoppingTabNavigator.Screen
-          name={'ShoppingListSettings'}
-          component={ShoppingListSettings}
+          name={'SettingsScree'}
+          component={SettingsScreen}
         />
       </ShoppingTabNavigator.Navigator>
     </NavigationContainer>
