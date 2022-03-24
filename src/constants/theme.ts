@@ -60,3 +60,7 @@ export const FONT_SIZES = Object.freeze({
   large: 22,
   extraLarge: 34,
 });
+
+export const ICON_SIZES = Object.freeze({
+  regular: 36,
+});
