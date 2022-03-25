@@ -5,7 +5,12 @@ import {Calendar} from 'react-native-calendars';
 import s from './styles';
 import LeftArrowIcon from 'src/assets/images/left-arrow.svg';
 import RightArrowIcon from 'src/assets/images/right-arrow.svg';
-import {ICON_SIZES} from 'src/constants/theme';
+import {
+  BACKGROUND_COLORS,
+  FONT_COLORS,
+  FONT_SIZES,
+  ICON_SIZES,
+} from 'src/constants/theme';
 
 const CustomCalendar = () => {
   const disableArrows = false;
@@ -26,7 +31,16 @@ const CustomCalendar = () => {
         monthFormat={'MMMM yyyy'}
         renderHeader={date => {
           console.log(date);
-          return <Text>{'date'}</Text>;
+          return (
+            <Text
+              style={{
+                color: FONT_COLORS.secondary,
+                fontSize: FONT_SIZES.large,
+                fontWeight: '700',
+              }}>
+              {'June 2022'}
+            </Text>
+          );
         }}
         disableArrowLeft={disableArrows}
         disableArrowRight={disableArrows}

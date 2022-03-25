@@ -11,6 +11,7 @@ import {
   ShoppingListTabParamList,
 } from 'src/navigation/types';
 import {renderTabIcons} from './utils';
+import {Text, View} from 'react-native';
 
 const ShoppingTabNavigator =
   createBottomTabNavigator<ShoppingListTabParamList>();
@@ -18,7 +19,13 @@ const ShoppingTabNavigator =
 const AppNavigation = () => {
   return (
     <NavigationContainer>
-      <ShoppingTabNavigator.Navigator screenOptions={renderTabIcons}>
+      <ShoppingTabNavigator.Navigator
+        // tabBar={props => (
+        //   <View style={}>
+        //     <Text>Hey</Text>
+        //   </View>
+        // )}
+        screenOptions={renderTabIcons}>
         <ShoppingTabNavigator.Screen
           name={ShoppingListScreenNames.Calendar}
           component={CalendarScreen}

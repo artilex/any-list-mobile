@@ -1,19 +1,45 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
+import {FlatList, Text, TouchableOpacity, View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 
 import s from './styles';
-import CalendarSvg from 'src/assets/images/calendar.svg';
-import ActiveCalendarSvg from 'src/assets/images/calendar-active.svg';
+import PlusIcon from 'src/assets/images/circle-plus.svg';
 import {CustomCalendar} from 'src/components';
+import {BORDER, COLORS, ICON_SIZES, PADDINGS} from 'src/constants/theme';
 
 const Calendar = () => {
   const {t} = useTranslation();
-  const [a, setA] = useState(false);
-  const Icon = a ? ActiveCalendarSvg : CalendarSvg;
+
+  // TODO: Replace TochableOpacity to CustomComponent with bottom clicable border or shadow
   return (
     <View style={s.container}>
       <CustomCalendar />
+      <View
+        style={{
+          flex: 1,
+          borderTopColor: COLORS.grayPrimary,
+          borderTopWidth: BORDER.width,
+          borderBottomColor: COLORS.grayPrimary,
+          borderBottomWidth: BORDER.width,
+        }}>
+        <FlatList
+          data={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+          renderItem={() => (
+            <View style={{padding: PADDINGS.regular}}>
+              <Text>Hello there</Text>
+            </View>
+          )}
+        />
+        <TouchableOpacity
+          activeOpacity={0.8}
+          style={{
+            position: 'absolute',
+            right: PADDINGS.regular,
+            bottom: PADDINGS.regular,
+          }}>
+          <PlusIcon width={ICON_SIZES.large} height={ICON_SIZES.large} />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

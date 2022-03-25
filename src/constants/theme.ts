@@ -1,9 +1,9 @@
 export const COLORS = Object.freeze({
-  bluePrimary: '#2b70c9',
-  blueSecondary: '#1cb0f6',
-  blueThird: '#1899d6',
-  blueFourth: '#ddf4ff',
-  blueFifth: '#84d8ff',
+  bluePrimary: '#1cb0f6',
+  blueSecondary: '#1899d6',
+  blueThird: '#ddf4ff',
+  blueFourth: '#84d8ff',
+  blueFifth: '#2b70c9',
   black: '#4b4b4b',
   grayPrimary: '#e5e5e5',
   graySecondary: '#afafaf',
@@ -16,18 +16,18 @@ export const COLORS = Object.freeze({
 
 export const BACKGROUND_COLORS = Object.freeze({
   primary: COLORS.white,
+  secondary: COLORS.blueThird,
   error: COLORS.redThird,
-  active: COLORS.blueFourth, // is it need?
 });
 
 export const FONT_COLORS = Object.freeze({
   primary: COLORS.black,
-  active: COLORS.blueFifth, // is it need?
+  secondary: COLORS.bluePrimary,
 });
 
 export const REGULAR_BUTTON = Object.freeze({
-  background: COLORS.blueSecondary,
-  border: COLORS.blueThird,
+  background: COLORS.bluePrimary,
+  border: COLORS.blueSecondary,
   font: COLORS.white,
 });
 
@@ -63,4 +63,6 @@ export const FONT_SIZES = Object.freeze({
 
 export const ICON_SIZES = Object.freeze({
   regular: 36,
+  large: 56,
+  extraLarge: 64,
 });
