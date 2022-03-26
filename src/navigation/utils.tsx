@@ -1,13 +1,14 @@
 import React, {FC} from 'react';
 import {RouteProp} from '@react-navigation/core/lib/typescript/src/types';
+import {BottomTabNavigationOptions} from '@react-navigation/bottom-tabs';
 import {SvgProps} from 'react-native-svg';
 
 import {ShoppingListTabParamList} from 'src/navigation/types';
+import {BORDER, ICON_SIZES} from 'src/constants/theme';
 import CalendarIcon from 'src/assets/images/calendar.svg';
 import ActiveCalendarIcon from 'src/assets/images/calendar-active.svg';
 import SettingsIcon from 'src/assets/images/settings.svg';
 import ActiveSettingsIcon from 'src/assets/images/settings-active.svg';
-import {ICON_SIZES} from 'src/constants/theme';
 
 type RouteProps = {
   route: RouteProp<ShoppingListTabParamList>;
@@ -25,9 +26,22 @@ const Icons: {[key: string]: FC<SvgProps>} = {
   Settings: SettingsIcon,
 };
 
-export const renderTabIcons = ({route}: RouteProps) => {
+export const tabScreenOptions = ({
+  route,
+}: RouteProps): BottomTabNavigationOptions => {
   return {
+    headerShown: false,
     tabBarShowLabel: false,
+    tabBarStyle: {
+      height: ICON_SIZES.regular * 2,
+      borderTopWidth: BORDER.width,
+      borderBottomWidth: 0,
+      elevation: 0,
+      shadowOffset: {
+        width: 0,
+        height: 0,
+      },
+    },
     tabBarIcon: ({focused}: TabBarIconProps) => {
       let iconName: string = route.name;
       if (focused) {

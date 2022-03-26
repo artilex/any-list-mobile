@@ -66,3 +66,10 @@ export const ICON_SIZES = Object.freeze({
   large: 56,
   extraLarge: 64,
 });
+
+export const FONT_FAMILY = Object.freeze({
+  regular: 'Nunito-Regular',
+  italic: 'Nonito-Italic',
+  bold: 'Nunito-Bold',
+  extraBold: 'Nunito-Black',
+});

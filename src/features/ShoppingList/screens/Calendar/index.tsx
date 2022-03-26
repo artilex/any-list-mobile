@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {FlatList, Text, TouchableOpacity, View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 
@@ -13,14 +13,14 @@ const Calendar = () => {
   // TODO: Replace TochableOpacity to CustomComponent with bottom clicable border or shadow
   return (
     <View style={s.container}>
-      <CustomCalendar />
+      <CustomCalendar
+        onSelectDay={day => console.log('SHOW DATA FOR THIS DAY: ' + day)}
+      />
       <View
         style={{
           flex: 1,
           borderTopColor: COLORS.grayPrimary,
           borderTopWidth: BORDER.width,
-          borderBottomColor: COLORS.grayPrimary,
-          borderBottomWidth: BORDER.width,
         }}>
         <FlatList
           data={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
