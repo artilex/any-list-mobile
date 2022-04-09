@@ -49,9 +49,11 @@ export const BORDER = Object.freeze({
 });
 
 export const PADDINGS = Object.freeze({
-  small: 12,
-  regular: 16,
-  large: 20,
+  extraSmall: 4,
+  small: 8,
+  regular: 12,
+  large: 16,
+  extraLarge: 20,
 });
 
 export const FONT_SIZES = Object.freeze({
