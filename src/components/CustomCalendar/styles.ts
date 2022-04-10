@@ -3,6 +3,7 @@ import {Theme} from 'react-native-calendars/src/types';
 
 import {
   BACKGROUND_COLORS,
+  BORDER,
   COLORS,
   FONT_COLORS,
   FONT_FAMILY,
@@ -12,10 +13,11 @@ import {
 
 export default StyleSheet.create({
   container: {
-    //
+    marginHorizontal: PADDINGS.regular,
   },
   calendarHeaderContainer: {
     flexDirection: 'row',
+    marginVertical: PADDINGS.regular,
   },
   calendarHeaderTitle: {
     flex: 1,
@@ -30,10 +32,6 @@ export default StyleSheet.create({
     fontSize: FONT_SIZES.regular,
     fontFamily: FONT_FAMILY.extraBold,
   },
-  arrowIconWrapper: {
-    paddingVertical: PADDINGS.regular,
-    paddingHorizontal: PADDINGS.large,
-  },
   weekCalendarContainer: {
     flexDirection: 'row',
   },
@@ -43,7 +41,6 @@ export default StyleSheet.create({
   weekDayNameContainer: {
     flex: 1,
     alignItems: 'center',
-    paddingVertical: PADDINGS.extraSmall,
   },
   weekDayNameText: {
     fontFamily: FONT_FAMILY.extraBold,
@@ -52,16 +49,37 @@ export default StyleSheet.create({
   },
   weekDayContainer: {
     flex: 1,
+    padding: PADDINGS.extraSmall,
+  },
+  weekDayWrapper: {
+    aspectRatio: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    paddingVertical: PADDINGS.small,
+    borderRadius: 100,
+  },
+  weekDaySelected: {
+    borderWidth: BORDER.width,
+    borderColor: COLORS.bluePrimary,
+  },
+  weekDaySelectedToday: {
+    backgroundColor: COLORS.bluePrimary,
   },
   weekDayText: {
     color: FONT_COLORS.primary,
     fontSize: FONT_SIZES.regular,
     fontFamily: FONT_FAMILY.extraBold,
   },
+  weekDayTodayText: {
+    color: COLORS.bluePrimary,
+  },
+  weekDayTodaySelectedText: {
+    color: COLORS.white,
+  },
+  weekDayDisabledText: {
+    color: COLORS.grayPrimary,
+  },
   horizontalSplitter: {
-    width: PADDINGS.small,
+    width: PADDINGS.regular,
   },
 });
 

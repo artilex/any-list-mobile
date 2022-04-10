@@ -15,6 +15,7 @@ const Calendar = () => {
     <View style={s.container}>
       <CustomCalendar
         onSelectDay={day => console.log('SHOW DATA FOR THIS DAY: ' + day)}
+        firstDay={1}
       />
       <View
         style={{
@@ -36,7 +37,8 @@ const Calendar = () => {
             position: 'absolute',
             right: PADDINGS.regular,
             bottom: PADDINGS.regular,
-          }}>
+          }}
+          onPress={() => console.log('Hola')}>
           <PlusIcon width={ICON_SIZES.large} height={ICON_SIZES.large} />
         </TouchableOpacity>
       </View>

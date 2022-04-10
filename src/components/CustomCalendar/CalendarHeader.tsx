@@ -27,12 +27,10 @@ const CalendarHeader = ({
   const {regular} = ICON_SIZES;
   return (
     <View style={s.calendarHeaderContainer}>
-      <TouchableOpacity
-        style={s.arrowIconWrapper}
-        activeOpacity={0.6}
-        onPress={onPrev}>
+      <TouchableOpacity activeOpacity={0.6} onPress={onPrev}>
         <LeftArrowIcon width={regular} height={regular} />
       </TouchableOpacity>
+      <View style={s.horizontalSplitter} />
       <View style={s.calendarHeaderTitle}>
         <View style={s.calendarHeaderTitleWrapper}>
           <CustomText style={s.titleText}>{title}</CustomText>
@@ -41,10 +39,8 @@ const CalendarHeader = ({
         <View style={s.horizontalSplitter} />
         <CustomButton text={'T'} onPress={onToday} />
       </View>
-      <TouchableOpacity
-        style={s.arrowIconWrapper}
-        activeOpacity={0.6}
-        onPress={onNext}>
+      <View style={s.horizontalSplitter} />
+      <TouchableOpacity activeOpacity={0.6} onPress={onNext}>
         <RightArrowIcon width={regular} height={regular} />
       </TouchableOpacity>
     </View>
