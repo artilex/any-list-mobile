@@ -10,6 +10,8 @@ import {BORDER, COLORS, ICON_SIZES, PADDINGS} from 'src/constants/theme';
 const Calendar = () => {
   const {t} = useTranslation();
 
+  // TODO: Fix SafeArea for ios (Header and BottomTab)
+  // TODO: Add App Icon
   // TODO: Replace TochableOpacity to CustomComponent with bottom clicable border or shadow
   return (
     <View style={s.container}>

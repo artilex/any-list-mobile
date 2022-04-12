@@ -13,7 +13,11 @@ const MonthCalendar = ({weeks, onSelectDay}: Props) => {
   return (
     <View>
       {weeks.map(weekDays => (
-        <WeekCalendar weekDays={weekDays} onSelectDay={onSelectDay} />
+        <WeekCalendar
+          key={weekDays[0].date.getTime()}
+          weekDays={weekDays}
+          onSelectDay={onSelectDay}
+        />
       ))}
     </View>
   );
