@@ -33,9 +33,10 @@ export const tabScreenOptions = ({
     headerShown: false,
     tabBarShowLabel: false,
     tabBarStyle: {
-      height: ICON_SIZES.regular * 2,
+      height: ICON_SIZES.regular * 1.6,
       borderTopWidth: BORDER.width,
       borderBottomWidth: 0,
+      paddingBottom: 0,
       elevation: 0,
       shadowOffset: {
         width: 0,

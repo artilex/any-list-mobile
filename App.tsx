@@ -1,5 +1,6 @@
 import React from 'react';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {StyleSheet} from 'react-native';
+import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 
 import AppNavigation from './src/navigation';
 import './src/services/i18n';
@@ -7,9 +8,15 @@ import './src/services/i18n';
 const App = () => {
   return (
     <SafeAreaProvider>
-      <AppNavigation />
+      <SafeAreaView style={s.safeArea}>
+        <AppNavigation />
+      </SafeAreaView>
     </SafeAreaProvider>
   );
 };
+
+const s = StyleSheet.create({
+  safeArea: {flex: 1},
+});
 
 export default App;
