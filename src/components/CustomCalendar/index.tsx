@@ -12,23 +12,31 @@ import {
   addDays,
   getHeaderDate,
   getMonthWeeks,
+  getStartOfWeek,
   getWeekDayNames,
   getWeekDays,
   onlyDate,
+  sameDays,
 } from './utils';
 
 type Props = {
   firstDay: number;
-  onSelectDay: (day: string) => void;
+  monthNames: string[];
+  weekDayNames: string[];
+  onSelectDay: (day: Date) => void;
 };
 
-// TODO: Add onSelectDay to Handler
-const CustomCalendar = ({onSelectDay, firstDay = 0}: Props) => {
+const CustomCalendar = ({
+  firstDay = 0,
+  monthNames,
+  weekDayNames,
+  onSelectDay,
+}: Props) => {
   const [selectedDay, setSelectedDay] = useState(new Date());
   const [mode, setMode] = useState<CalendarMode>(CalendarMode.Week);
 
-  const headerTitle = getHeaderDate(selectedDay, MONTH_NAMES);
-  const weekNames = getWeekDayNames(DAY_NAMES_SHORT, firstDay);
+  const headerTitle = getHeaderDate(selectedDay, monthNames);
+  const weekNames = getWeekDayNames(weekDayNames, firstDay);
   const weekDays = getWeekDays(selectedDay, firstDay);
   const weeks = getMonthWeeks(selectedDay, firstDay);
 
@@ -43,38 +51,49 @@ const CustomCalendar = ({onSelectDay, firstDay = 0}: Props) => {
   };
 
   const handlePrev = () => {
-    const startOfPrevWeek = addDays(selectedDay, -DAYS_IN_WEEK);
+    let nextDay;
 
-    const startOfPrevMonth = onlyDate(
-      selectedDay.getFullYear(),
-      selectedDay.getMonth() - 1,
-      1,
-    );
+    if (mode === CalendarMode.Week) {
+      const prevWeekDay = addDays(selectedDay, -DAYS_IN_WEEK);
+      nextDay = getStartOfWeek(prevWeekDay, firstDay);
+    } else {
+      nextDay = onlyDate(
+        selectedDay.getFullYear(),
+        selectedDay.getMonth() - 1,
+        1,
+      );
+    }
 
-    setSelectedDay(
-      mode === CalendarMode.Week ? startOfPrevWeek : startOfPrevMonth,
-    );
+    setSelectedDay(nextDay);
   };
 
   const handleNext = () => {
-    const startOfNextWeek = addDays(selectedDay, DAYS_IN_WEEK);
+    let nextDay;
 
-    const startOfNextMonth = onlyDate(
-      selectedDay.getFullYear(),
-      selectedDay.getMonth() + 1,
-      1,
-    );
+    if (mode === CalendarMode.Week) {
+      const nextWeekDay = addDays(selectedDay, DAYS_IN_WEEK);
+      nextDay = getStartOfWeek(nextWeekDay, firstDay);
+    } else {
+      nextDay = onlyDate(
+        selectedDay.getFullYear(),
+        selectedDay.getMonth() + 1,
+        1,
+      );
+    }
 
-    setSelectedDay(
-      mode === CalendarMode.Week ? startOfNextWeek : startOfNextMonth,
-    );
+    setSelectedDay(nextDay);
+  };
+
+  const handleSelectDay = (day: Date) => {
+    onSelectDay(day);
+    setSelectedDay(day);
   };
 
   const renderCalendar = () =>
     mode === CalendarMode.Week ? (
-      <WeekCalendar weekDays={weekDays} onSelectDay={setSelectedDay} />
+      <WeekCalendar weekDays={weekDays} onSelectDay={handleSelectDay} />
     ) : (
-      <MonthCalendar weeks={weeks} onSelectDay={setSelectedDay} />
+      <MonthCalendar weeks={weeks} onSelectDay={handleSelectDay} />
     );
 
   return (
@@ -82,6 +101,7 @@ const CustomCalendar = ({onSelectDay, firstDay = 0}: Props) => {
       <CalendarHeader
         title={headerTitle}
         mode={mode}
+        todayDisabled={sameDays(new Date(), selectedDay)}
         onPrev={handlePrev}
         onNext={handleNext}
         onModeChange={handleModeChange}
@@ -96,109 +116,5 @@ const CustomCalendar = ({onSelectDay, firstDay = 0}: Props) => {
     </View>
   );
 };
-
-// TODO: Move to Translations
-const DAY_NAMES_SHORT = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
-const MONTH_NAMES = [
-  'Январь',
-  'Февраль',
-  'Март',
-  'Апрель',
-  'Май',
-  'Июнь',
-  'Июль',
-  'Август',
-  'Сентябрь',
-  'Октябрь',
-  'Ноябрь',
-  'Декабрь',
-];
-
-//
-// LocaleConfig.locales.ru = {
-//   monthNames: [
-//     'Январь',
-//     'Февраль',
-//     'Март',
-//     'Апрель',
-//     'Май',
-//     'Июнь',
-//     'Июль',
-//     'Август',
-//     'Сентябрь',
-//     'Октябрь',
-//     'Ноябрь',
-//     'Декабрь',
-//   ],
-//   monthNamesShort: [
-//     'Январь',
-//     'Февраль',
-//     'Март',
-//     'Апрель',
-//     'Май',
-//     'Июнь',
-//     'Июль',
-//     'Август',
-//     'Сентябрь',
-//     'Октябрь',
-//     'Ноябрь',
-//     'Декабрь',
-//   ],
-//   dayNames: [
-//     'Воскресенье',
-//     'Понедельник',
-//     'Вторник',
-//     'Среда',
-//     'Четверг',
-//     'Пятница',
-//     'Суббота',
-//   ],
-//   dayNamesShort: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
-//   today: 'Сегодня',
-// };
-//
-// LocaleConfig.locales.en = {
-//   monthNames: [
-//     'Janvier',
-//     'Février',
-//     'Mars',
-//     'Avril',
-//     'Mai',
-//     'Juin',
-//     'Juillet',
-//     'Août',
-//     'Septembre',
-//     'Octobre',
-//     'Novembre',
-//     'Décembre',
-//   ],
-//   monthNamesShort: [
-//     'Janv.',
-//     'Févr.',
-//     'Mars',
-//     'Avril',
-//     'Mai',
-//     'Juin',
-//     'Juil.',
-//     'Août',
-//     'Sept.',
-//     'Oct.',
-//     'Nov.',
-//     'Déc.',
-//   ],
-//   dayNames: [
-//     'Dimanche',
-//     'Lundi',
-//     'Mardi',
-//     'Mercredi',
-//     'Jeudi',
-//     'Vendredi',
-//     'Samedi',
-//   ],
-//   dayNamesShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-//   today: "Aujourd'hui",
-// };
-//
-// LocaleConfig.defaultLocale = 'ru';
 
 export default CustomCalendar;

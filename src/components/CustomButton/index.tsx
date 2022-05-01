@@ -1,21 +1,33 @@
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
+import {Pressable} from 'react-native';
 
-import s from './styles';
+import {styles} from './styles';
 import CustomText from 'src/components/CustomText';
 
 type Props = {
   text: string;
+  color?: string;
+  disabled?: boolean;
   onPress: () => void;
 };
 
-// TODO: 1 Take color as a prop
-// TODO: 2 Add disabled prop with gray color
-// TODO: 3 Implement animation for press (reduce bottom border with)
-const CustomButton = ({text, onPress}: Props) => (
-  <TouchableOpacity activeOpacity={0.6} style={s.container} onPress={onPress}>
-    <CustomText style={s.text}>{text}</CustomText>
-  </TouchableOpacity>
-);
+const CustomButton = ({text, color, disabled, onPress}: Props) => {
+  const s = styles(color);
+
+  return (
+    <Pressable
+      style={({pressed}) => [
+        s.container,
+        pressed && s.pressed,
+        disabled && s.disabled,
+      ]}
+      onPress={onPress}
+      disabled={disabled}>
+      <CustomText style={[s.text, disabled && s.disabledText]}>
+        {text}
+      </CustomText>
+    </Pressable>
+  );
+};
 
 export default CustomButton;

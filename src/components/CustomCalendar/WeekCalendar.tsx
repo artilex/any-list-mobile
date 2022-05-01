@@ -10,27 +10,25 @@ type Props = {
   onSelectDay: (date: Date) => void;
 };
 
-const WeekCalendar = ({weekDays, onSelectDay}: Props) => {
-  return (
-    <View style={s.weekCalendarContainer}>
-      {weekDays.map(({date, isToday, isSelected, isCurrent}) => {
-        const handleSelectDay = () => {
-          onSelectDay(date);
-        };
+const WeekCalendar = React.memo(({weekDays, onSelectDay}: Props) => (
+  <View style={s.weekCalendarContainer}>
+    {weekDays.map(({date, isToday, isSelected, isCurrent}) => {
+      const handleSelectDay = () => {
+        onSelectDay(date);
+      };
 
-        return (
-          <WeekDay
-            key={date.getDate()}
-            day={date.getDate()}
-            isToday={isToday}
-            isSelected={isSelected}
-            isDisabled={!isCurrent}
-            onSelectDay={handleSelectDay}
-          />
-        );
-      })}
-    </View>
-  );
-};
+      return (
+        <WeekDay
+          key={date.getDate()}
+          day={date.getDate()}
+          isToday={isToday}
+          isSelected={isSelected}
+          isDisabled={!isCurrent}
+          onSelectDay={handleSelectDay}
+        />
+      );
+    })}
+  </View>
+));
 
 export default WeekCalendar;

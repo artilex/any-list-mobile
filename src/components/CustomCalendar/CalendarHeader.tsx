@@ -10,6 +10,7 @@ import s from './styles';
 type Props = {
   title: string;
   mode: string;
+  todayDisabled: boolean;
   onPrev: () => void;
   onNext: () => void;
   onModeChange: () => void;
@@ -19,6 +20,7 @@ type Props = {
 const CalendarHeader = ({
   title,
   mode,
+  todayDisabled,
   onPrev,
   onNext,
   onModeChange,
@@ -37,7 +39,7 @@ const CalendarHeader = ({
         </View>
         <CustomButton text={mode} onPress={onModeChange} />
         <View style={s.horizontalSplitter} />
-        <CustomButton text={'T'} onPress={onToday} />
+        <CustomButton text={'T'} onPress={onToday} disabled={todayDisabled} />
       </View>
       <View style={s.horizontalSplitter} />
       <TouchableOpacity activeOpacity={0.6} onPress={onNext}>

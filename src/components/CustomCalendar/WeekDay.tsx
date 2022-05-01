@@ -11,33 +11,29 @@ type Props = {
   onSelectDay: () => void;
 };
 
-const WeekDay = ({
-  day,
-  isToday,
-  isSelected,
-  isDisabled,
-  onSelectDay,
-}: Props) => (
-  <View style={s.weekDayContainer}>
-    <TouchableOpacity
-      activeOpacity={1}
-      onPress={onSelectDay}
-      style={[
-        s.weekDayWrapper,
-        isSelected && isToday && s.weekDaySelectedToday,
-        isSelected && !isToday && s.weekDaySelected,
-      ]}>
-      <Text
+const WeekDay = React.memo(
+  ({day, isToday, isSelected, isDisabled, onSelectDay}: Props) => (
+    <View style={s.weekDayContainer}>
+      <TouchableOpacity
+        activeOpacity={1}
+        onPress={onSelectDay}
         style={[
-          s.weekDayText,
-          isToday && !isSelected && s.weekDayTodayText,
-          isToday && isSelected && s.weekDayTodaySelectedText,
-          isDisabled && s.weekDayDisabledText,
+          s.weekDayWrapper,
+          isSelected && isToday && s.weekDaySelectedToday,
+          isSelected && !isToday && s.weekDaySelected,
         ]}>
-        {day}
-      </Text>
-    </TouchableOpacity>
-  </View>
+        <Text
+          style={[
+            s.weekDayText,
+            isToday && !isSelected && s.weekDayTodayText,
+            isToday && isSelected && s.weekDayTodaySelectedText,
+            isDisabled && s.weekDayDisabledText,
+          ]}>
+          {day}
+        </Text>
+      </TouchableOpacity>
+    </View>
+  ),
 );
 
 export default WeekDay;
