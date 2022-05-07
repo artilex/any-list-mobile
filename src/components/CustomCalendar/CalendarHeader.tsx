@@ -4,7 +4,8 @@ import {TouchableOpacity, View} from 'react-native';
 import LeftArrowIcon from 'src/assets/images/left-arrow.svg';
 import RightArrowIcon from 'src/assets/images/right-arrow.svg';
 import {ICON_SIZES} from 'src/constants/theme';
-import {CustomButton, CustomText} from 'src/components';
+import CustomText from '../CustomText';
+import CustomButton from '../CustomButton';
 import s from './styles';
 
 type Props = {

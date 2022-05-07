@@ -11,6 +11,9 @@ export default StyleSheet.create({
     borderTopColor: COLORS.grayPrimary,
     borderTopWidth: BORDER.width,
   },
+  flatList: {
+    margin: PADDINGS.regular,
+  },
   addButton: {
     position: 'absolute',
     right: PADDINGS.regular,
