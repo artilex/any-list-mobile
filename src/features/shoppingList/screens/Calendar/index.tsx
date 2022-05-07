@@ -1,5 +1,7 @@
 import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {FlatList, TouchableOpacity, View} from 'react-native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {useNavigation} from '@react-navigation/native';
 import {useTranslation} from 'react-i18next';
 
 import s from './styles';
@@ -11,12 +13,22 @@ import {ShoppingItem} from 'src/types/shoppingList';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootReducer} from 'src/store';
 import {loadShoppingItem} from 'src/store/shoppingList';
+import {
+  CalendarScreenNames,
+  CalendarStackParamList,
+} from 'src/navigation/types';
 
 const START_FROM_MONDAY = 1;
+
+type NavigationProp = StackNavigationProp<
+  CalendarStackParamList,
+  CalendarScreenNames.CalendarList
+>;
 
 const Calendar = () => {
   const {t} = useTranslation();
   const dispatch = useDispatch();
+  const navigation = useNavigation<NavigationProp>();
   const [selectedDay, setSelectedDay] = useState(new Date());
 
   const {
@@ -66,6 +78,12 @@ const Calendar = () => {
     setSelectedDay(day);
   }, []);
 
+  const handleCreateItem = () => {
+    navigation.navigate(CalendarScreenNames.EditShoppingItem, {
+      day: selectedDay,
+    });
+  };
+
   const keyExtractor = useCallback((item: ShoppingItem) => item.id, []);
 
   // TODO: 0. Mock api requests in api client (IN PROGRESS)
@@ -99,7 +117,7 @@ const Calendar = () => {
         <TouchableOpacity
           activeOpacity={0.7}
           style={s.addButton}
-          onPress={() => console.log('Hola')}>
+          onPress={handleCreateItem}>
           <PlusIcon width={ICON_SIZES.large} height={ICON_SIZES.large} />
         </TouchableOpacity>
       </View>

@@ -4,13 +4,15 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {
   CalendarScreen,
+  EditShoppingItemScreen,
   SettingsScreen,
-} from 'src/features/ShoppingList/screens';
+} from 'src/features/shoppingList/screens';
 import {
   ShoppingListScreenNames,
   ShoppingListTabParamList,
 } from 'src/navigation/types';
 import {tabScreenOptions} from './utils';
+import {CalendarNavigator} from 'src/navigation/CalendarNavigator';
 
 const ShoppingTabNavigator =
   createBottomTabNavigator<ShoppingListTabParamList>();
@@ -21,13 +23,11 @@ const AppNavigation = () => {
       <ShoppingTabNavigator.Navigator screenOptions={tabScreenOptions}>
         <ShoppingTabNavigator.Screen
           name={ShoppingListScreenNames.Calendar}
-          component={CalendarScreen}
-          options={{}}
+          component={CalendarNavigator}
         />
         <ShoppingTabNavigator.Screen
           name={ShoppingListScreenNames.Settings}
           component={SettingsScreen}
-          options={{}}
         />
       </ShoppingTabNavigator.Navigator>
     </NavigationContainer>
