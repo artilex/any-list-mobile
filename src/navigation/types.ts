@@ -10,10 +10,8 @@ export enum ShoppingListScreenNames {
 export type CalendarStackParamList = {
   CalendarList: undefined;
   EditShoppingItem: {
-    title: string;
     day: string;
     itemId?: string;
-    handleSave?: () => void;
   };
 };
 export enum CalendarScreenNames {

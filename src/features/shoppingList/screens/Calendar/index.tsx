@@ -83,7 +83,6 @@ const Calendar = () => {
     const date = new TDate();
 
     navigation.navigate(CalendarScreenNames.EditShoppingItem, {
-      title: t('screenNames.newItem'),
       day: date.getDate(),
     });
   };

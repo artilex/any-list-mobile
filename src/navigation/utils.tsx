@@ -4,15 +4,11 @@ import {BottomTabNavigationOptions} from '@react-navigation/bottom-tabs';
 import {SvgProps} from 'react-native-svg';
 
 import {ShoppingListTabParamList} from 'src/navigation/types';
-import {BORDER, HEADER_ICON_SIZE, ICON_SIZES} from 'src/constants/theme';
+import {BORDER, ICON_SIZES} from 'src/constants/theme';
 import CalendarIcon from 'src/assets/images/calendar.svg';
 import ActiveCalendarIcon from 'src/assets/images/calendar-active.svg';
 import SettingsIcon from 'src/assets/images/settings.svg';
 import ActiveSettingsIcon from 'src/assets/images/settings-active.svg';
-import BackIcon from 'src/assets/images/close-button.svg';
-import CustomHeaderTitle from 'src/navigation/components/CustomHeaderTitle';
-import CustomHeaderRight from 'src/navigation/components/CustomHeaderRight';
-import {StackNavigationOptions} from '@react-navigation/stack';
 
 type RouteProps = {
   route: RouteProp<ShoppingListTabParamList>;
@@ -60,19 +56,3 @@ export const tabScreenOptions = ({
     },
   };
 };
-
-export const innerStackScreenOptions = (
-  title: string,
-  saveLabel: string,
-  onSave?: () => void,
-): StackNavigationOptions => ({
-  headerTitleAlign: 'center',
-  headerShadowVisible: false,
-  headerBackImage: () => (
-    <BackIcon width={HEADER_ICON_SIZE} height={HEADER_ICON_SIZE} />
-  ),
-  headerTitle: () => <CustomHeaderTitle title={title} />,
-  headerRight: () => (
-    <CustomHeaderRight saveLabel={saveLabel} onSave={onSave} />
-  ),
-});
