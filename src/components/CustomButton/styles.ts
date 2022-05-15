@@ -16,7 +16,7 @@ export const styles = (color: string = COLORS.bluePrimary) =>
     },
     disabled: {
       borderBottomWidth: BORDER.width,
-      borderColor: COLORS.grayPrimary,
+      borderColor: BORDER.color,
     },
     text: {
       color: color,

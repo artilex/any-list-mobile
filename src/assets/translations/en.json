@@ -1,6 +1,12 @@
 {
   "shoppingList": {
-    "test": "Test"
+    "name": "Name",
+    "category": "Category",
+    "date": "Date",
+    "quantity": "Quantity",
+    "unit": "Unit",
+    "price": "Price",
+    "note": "Note"
   },
   "common": {
     "done": "Done"

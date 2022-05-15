@@ -1,6 +1,12 @@
 {
   "shoppingList": {
-    "test": "test"
+    "name": "Название",
+    "category": "Категория",
+    "date": "Дата",
+    "quantity": "Количество",
+    "unit": "Единица измерения",
+    "price": "Цена",
+    "note": "Комментарий"
   },
   "common": {
     "done": "Готово"

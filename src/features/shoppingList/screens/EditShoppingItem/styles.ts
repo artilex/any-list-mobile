@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {BACKGROUND_COLORS, FONT_COLORS} from 'src/constants/theme';
+import {BACKGROUND_COLORS, FONT_COLORS, PADDINGS} from 'src/constants/theme';
 
 export default StyleSheet.create({
   container: {
@@ -9,5 +9,11 @@ export default StyleSheet.create({
   titleButtonText: {
     color: FONT_COLORS.secondary,
     textTransform: 'uppercase',
+  },
+  form: {
+    marginHorizontal: PADDINGS.large,
+  },
+  row: {
+    marginBottom: PADDINGS.large,
   },
 });

@@ -1,18 +1,12 @@
 import {StyleSheet} from 'react-native';
-import {
-  BACKGROUND_COLORS,
-  BORDER,
-  COLORS,
-  PADDINGS,
-  REGULAR_BUTTON,
-} from 'src/constants/theme';
+import {BACKGROUND_COLORS, BORDER, COLORS, PADDINGS} from 'src/constants/theme';
 
 export default StyleSheet.create({
   container: {
     backgroundColor: BACKGROUND_COLORS.primary,
     borderRadius: BORDER.radius,
     borderWidth: BORDER.width,
-    borderColor: COLORS.grayPrimary,
+    borderColor: BORDER.color,
     padding: PADDINGS.small,
   },
   pressed: {

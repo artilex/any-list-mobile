@@ -1,5 +1,5 @@
-import React, {useCallback, useMemo} from 'react';
-import {TouchableOpacity, View} from 'react-native';
+import React, {useCallback, useMemo, useState} from 'react';
+import {ScrollView, TouchableOpacity, View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {RouteProp, useRoute} from '@react-navigation/native';
 
@@ -8,8 +8,7 @@ import {
   CalendarScreenNames,
   CalendarStackParamList,
 } from 'src/navigation/types';
-import CustomInput from 'src/components/CustomInput';
-import {NavigationHeaderLayout, CustomText} from 'src/components';
+import {NavigationHeaderLayout, CustomText, CustomInput} from 'src/components';
 
 type RouteProps = RouteProp<
   CalendarStackParamList,
@@ -19,6 +18,7 @@ type RouteProps = RouteProp<
 const EditShoppingItem = () => {
   const {t} = useTranslation();
   const route = useRoute<RouteProps>();
+  const [formName, setFormName] = useState('');
   const {day, itemId} = route.params;
   const isNewItem = !itemId;
   const screenTitle = isNewItem
@@ -45,7 +45,39 @@ const EditShoppingItem = () => {
   return (
     <View style={s.container}>
       <NavigationHeaderLayout right={headerRight} title={screenTitle} />
-      <CustomInput />
+
+      <ScrollView showsVerticalScrollIndicator={false} style={s.form}>
+        <View style={s.row}>
+          <CustomInput
+            value={formName}
+            onChangeText={setFormName}
+            label={t('shoppingList.name')}
+          />
+        </View>
+
+        <CustomText>{t('shoppingList.category')}</CustomText>
+        <CustomText>{t('shoppingList.date')}</CustomText>
+
+        <View style={s.row}>
+          <CustomInput
+            label={t('shoppingList.quantity')}
+            keyboardType={'numeric'}
+          />
+        </View>
+
+        <CustomText>{t('shoppingList.unit')}</CustomText>
+
+        <View style={s.row}>
+          <CustomInput
+            label={t('shoppingList.price')}
+            keyboardType={'numeric'}
+          />
+        </View>
+
+        <View style={s.row}>
+          <CustomInput label={t('shoppingList.note')} />
+        </View>
+      </ScrollView>
     </View>
   );
 };

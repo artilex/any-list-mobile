@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {BACKGROUND_COLORS, BORDER, COLORS, PADDINGS} from 'src/constants/theme';
+import {BACKGROUND_COLORS, BORDER, PADDINGS} from 'src/constants/theme';
 
 export default StyleSheet.create({
   container: {
@@ -8,7 +8,7 @@ export default StyleSheet.create({
   },
   body: {
     flex: 1,
-    borderTopColor: COLORS.grayPrimary,
+    borderTopColor: BORDER.color,
     borderTopWidth: BORDER.width,
   },
   flatList: {
