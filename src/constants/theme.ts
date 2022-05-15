@@ -8,6 +8,7 @@ export const COLORS = Object.freeze({
   grayPrimary: '#e5e5e5',
   graySecondary: '#afafaf',
   grayThird: '#777777',
+  grayFourth: '#f7f7f7',
   white: '#ffffff',
   redPrimary: '#ea2b2b',
   redSecondary: '#ff4b4b',
@@ -43,6 +44,7 @@ export const ERROR_BUTTON = Object.freeze({
 });
 
 export const BORDER = Object.freeze({
+  color: COLORS.grayPrimary,
   radius: 10,
   width: 2,
   bottomWidth: 4,
