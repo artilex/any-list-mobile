@@ -69,6 +69,8 @@ export const ICON_SIZES = Object.freeze({
   extraLarge: 64,
 });
 
+export const HEADER_ICON_SIZE = 32;
+
 export const FONT_FAMILY = Object.freeze({
   regular: 'Nunito-Regular',
   italic: 'Nonito-Italic',

@@ -17,6 +17,7 @@ import {
   CalendarScreenNames,
   CalendarStackParamList,
 } from 'src/navigation/types';
+import {TDate} from 'src/services/DateService';
 
 const START_FROM_MONDAY = 1;
 
@@ -79,8 +80,11 @@ const Calendar = () => {
   }, []);
 
   const handleCreateItem = () => {
+    const date = new TDate();
+
     navigation.navigate(CalendarScreenNames.EditShoppingItem, {
-      day: selectedDay,
+      title: t('screenNames.newItem'),
+      day: date.getDate(),
     });
   };
 

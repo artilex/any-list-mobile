@@ -2,6 +2,13 @@
   "shoppingList": {
     "test": "Test"
   },
+  "common": {
+    "done": "Done"
+  },
+  "screenNames": {
+    "newItem": "New Item",
+    "editItem": "Edit Item"
+  },
   "calendar": {
     "month": {
       "january": "January",
